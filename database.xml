@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <books>
+        <book>
+            <title>Rogue Lawyer</title>
+            <author>John Grisham</author>
+            <description>Lawyers and stuff</description>
+            <image>http://images.gr-assets.com/books/1434559021l/25387351.jpg</image>
+        </book>
+        <book>
+            <title>The Girl on the Train</title>
+            <author>Paula Hawkins</author>
+            <description>Trains and things</description>
+            <image>https://upload.wikimedia.org/wikipedia/en/5/50/The_Girl_On_The_Train_(US_cover_2015).png</image>
+        </book>
+        <book>
+            <title>Scandalous Behavior</title>
+            <author>Stuart Woods</author>
+            <description>Too much to drink</description>
+            <image>https://images-na.ssl-images-amazon.com/images/I/51UM5CboBvL._SX281_BO1,204,203,200_.jpg</image>
+        </book>
+        <book>
+            <title>Blue</title>
+            <author>Danielle Steel</author>
+            <description>Red</description>
+            <image>https://images-na.ssl-images-amazon.com/images/I/517WnND4a0L._SX327_BO1,204,203,200_.jpg</image>
+        </book>
+        <book>
+            <title>Brotherhood In Death</title>
+            <author>J. D. Robb</author>
+            <description>Cheery</description>
+            <image>https://images-na.ssl-images-amazon.com/images/I/51ZK5NcWTAL._SY344_BO1,204,203,200_.jpg</image>
+        </book>
+    </books>
+
+    <users>
+        <user username="admin" password="password"/>
+        <user username="tom" password="password"/>
+    </users>
+</root>
