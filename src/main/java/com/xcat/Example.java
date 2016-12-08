@@ -13,8 +13,8 @@ import static spark.debug.DebugScreen.enableDebugScreen;
 import net.sf.saxon.s9api.*;
 
 
-public class HelloWorld {
-    static Processor processor = new Processor(false);
+public class Example {
+    private static Processor processor = new Processor(false);
 
 
 	public static void main(String[] args) throws Exception {
