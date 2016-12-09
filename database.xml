@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<root>
+<root first="1" second="2" third="">
+    <!-- My lovely library -->
     <books>
         <book>
             <title>Rogue Lawyer</title>
@@ -34,6 +35,7 @@
     </books>
 
     <users>
+        <!-- Go away -->
         <user username="admin" password="password"/>
         <user username="tom" password="password"/>
     </users>

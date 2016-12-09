@@ -5,28 +5,49 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.Serializable;
+import java.util.*;
 
 import static spark.debug.DebugScreen.enableDebugScreen;
 import net.sf.saxon.s9api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class Example {
     private static Processor processor = new Processor(false);
+    private static Logger logger = LoggerFactory.getLogger(Example.class);
+    private static XdmNode booksDoc;
 
-
-	public static void main(String[] args) throws Exception {
-
-        XdmNode booksDoc = processor.newDocumentBuilder().build(new File("database.xml"));
+    public static void main(String[] args) throws Exception {
+        booksDoc = processor.newDocumentBuilder().build(new File("database.xml"));
 
         String[] resultsNames = new String[] {"title", "author", "description", "image"};
         String[] xversions = new String[] {"1.0", "2.0", "3.0"};
 
+        if (Arrays.asList(args).contains("--repl")){
+            Scanner scan = new Scanner(System.in);
+            Serializer serializer = processor.newSerializer(System.out);
+
+            while (true){
+                System.out.print("Query: ");
+                String query = scan.nextLine();
+                XPathSelector selector;
+                try {
+                    selector = RunQuery(query, "3.0");
+                } catch (SaxonApiException e){
+                    continue;
+                }
+                System.out.print("Results:\n");
+                for (XdmItem item: selector) {
+                    System.out.print(item.toString() + "\n");
+                }
+                System.out.print("\n");
+            }
+        }
+
 		get("/", (req, res) -> {
             Map ctx = new HashMap();
-            XPathCompiler compiler = processor.newXPathCompiler();
             String selectedVersion = req.queryParams("xversion");
 
             ArrayList versionList = new ArrayList();
@@ -42,10 +63,6 @@ public class Example {
 
             ctx.put("xversions", versionList);
 
-            if (selectedVersion != null){
-                compiler.setLanguageVersion(selectedVersion);
-            }
-
             ctx.put("xversion", selectedVersion);
 
             String query = req.queryParams("query");
@@ -56,10 +73,10 @@ public class Example {
             ctx.put("query", query);
 
             ArrayList results = new ArrayList<String>();
+            String xquery = "/root/books/book[contains(title/text(), '" + query + "')]";
+            logger.info(xquery);
 
-            XPathSelector selector = compiler.compile("/root/books/book[contains(title/text(), '" + query + "')]").load();
-            selector.setContextItem(booksDoc);
-            for (XdmItem item: selector) {
+            for (XdmItem item: RunQuery(xquery, selectedVersion)) {
                 HashMap resultsMap = new HashMap<String, String>();
 
                 for (String name: resultsNames) {
@@ -77,6 +94,22 @@ public class Example {
 
         enableDebugScreen();
 	}
+
+	private static XPathSelector RunQuery(String query, String version) throws SaxonApiException{
+        XPathSelector selector;
+        XPathCompiler compiler = processor.newXPathCompiler();
+        compiler.setLanguageVersion(version);
+
+        try {
+            selector = compiler.compile(query).load();
+        } catch (SaxonApiException e){
+            logger.info("Error: " + e.toString());
+            throw e;
+        }
+
+        selector.setContextItem(booksDoc);
+        return selector;
+    }
 
     private static XdmNode getChild(XdmNode parent, QName childName) {
         XdmSequenceIterator iter = parent.axisIterator(Axis.CHILD, childName);
