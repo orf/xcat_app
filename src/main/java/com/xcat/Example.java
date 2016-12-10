@@ -5,7 +5,6 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.*;
 
 import static spark.debug.DebugScreen.enableDebugScreen;
@@ -15,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class Example {
-    private static Processor processor = new Processor(false);
+    private static Processor processor = new Processor(true);
     private static Logger logger = LoggerFactory.getLogger(Example.class);
     private static XdmNode booksDoc;
 
@@ -27,7 +26,6 @@ public class Example {
 
         if (Arrays.asList(args).contains("--repl")){
             Scanner scan = new Scanner(System.in);
-            Serializer serializer = processor.newSerializer(System.out);
 
             while (true){
                 System.out.print("Query: ");
@@ -49,6 +47,10 @@ public class Example {
 		get("/", (req, res) -> {
             Map ctx = new HashMap();
             String selectedVersion = req.queryParams("xversion");
+
+            if (selectedVersion == null){
+                selectedVersion = xversions[0];
+            }
 
             ArrayList versionList = new ArrayList();
 

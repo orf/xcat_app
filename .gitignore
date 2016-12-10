@@ -38,3 +38,4 @@ buildNumber.properties
 *.war
 *.ear
 hs_err_pid*
+lib/saxon-license.lic
