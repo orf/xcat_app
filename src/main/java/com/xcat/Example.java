@@ -77,6 +77,7 @@ public class Example {
             ArrayList results = new ArrayList<String>();
             String xquery = "/root/books/book[contains(title/text(), '" + query + "')]";
             logger.info(xquery);
+            ctx.put("xquery", xquery);
 
             for (XdmItem item: RunQuery(xquery, selectedVersion)) {
                 HashMap resultsMap = new HashMap<String, String>();
