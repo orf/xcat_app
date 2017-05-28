@@ -1,4 +1,6 @@
 language: java
+dist: trusty
+sudo: false
 
 cache:
   directories:
@@ -13,4 +15,4 @@ install:
   - mvn clean compile assembly:single
 
 script:
-  - java -jar target/demo-0.0.1-SNAPSHOT.jar-with-dependencies.jar --version
+  - java -jar target/demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar --version
