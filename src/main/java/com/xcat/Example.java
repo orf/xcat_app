@@ -19,15 +19,15 @@ public class Example {
     private static XdmNode booksDoc;
 
     public static void main(String[] args) throws Exception {
-        booksDoc = processor.newDocumentBuilder().build(new File("database.xml"));
-
-        String[] resultsNames = new String[] {"title", "author", "description", "image"};
-        String[] xversions = new String[] {"1.0", "2.0", "3.0"};
-
         if (Arrays.asList(args).contains("--version")){
            System.out.print("XCat example 0.0.1");
            return;
         }
+
+        String[] resultsNames = new String[] {"title", "author", "description", "image"};
+        String[] xversions = new String[] {"1.0", "2.0", "3.0"};
+
+        booksDoc = processor.newDocumentBuilder().build(new File("database.xml"));
 
         if (Arrays.asList(args).contains("--repl")){
             Scanner scan = new Scanner(System.in);
