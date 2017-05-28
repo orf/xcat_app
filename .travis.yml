@@ -3,4 +3,4 @@ jdk:
   - oraclejdk8
 
 script:
-  - mvn compile
+  - mvn clean compile assembly:single
