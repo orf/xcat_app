@@ -24,6 +24,11 @@ public class Example {
         String[] resultsNames = new String[] {"title", "author", "description", "image"};
         String[] xversions = new String[] {"1.0", "2.0", "3.0"};
 
+        if (Arrays.asList(args).contains("--version")){
+           System.out.print("XCat example 0.0.1");
+           return;
+        }
+
         if (Arrays.asList(args).contains("--repl")){
             Scanner scan = new Scanner(System.in);
 
