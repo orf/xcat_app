@@ -15,4 +15,4 @@ install:
   - mvn clean compile assembly:single -q
 
 script:
-  - java -jar target/demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar --version
+  - java -jar target/demo-0.1-jar-with-dependencies.jar --version
