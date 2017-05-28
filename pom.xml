@@ -44,6 +44,8 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <finalName>xcat-app</finalName>
     </build>
     <packaging>jar</packaging>
 
