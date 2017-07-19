@@ -1,11 +1,14 @@
 package com.xcat;
 
 import static spark.Spark.*;
+import spark.Request;
+import spark.Response;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.io.File;
 import java.util.*;
+import java.net.URLDecoder;
 
 import static spark.debug.DebugScreen.enableDebugScreen;
 import net.sf.saxon.s9api.*;
@@ -17,15 +20,14 @@ public class Example {
     private static Processor processor = new Processor(true);
     private static Logger logger = LoggerFactory.getLogger(Example.class);
     private static XdmNode booksDoc;
+    private static String[] xversions = new String[] {"1.0", "2.0", "3.0"};
+    private static String[] resultsNames = new String[] {"title", "author", "description", "image"};
 
     public static void main(String[] args) throws Exception {
         if (Arrays.asList(args).contains("--version")){
            System.out.print("XCat example 0.0.1");
            return;
         }
-
-        String[] resultsNames = new String[] {"title", "author", "description", "image"};
-        String[] xversions = new String[] {"1.0", "2.0", "3.0"};
 
         booksDoc = processor.newDocumentBuilder().build(new File("database.xml"));
 
@@ -49,8 +51,16 @@ public class Example {
             }
         }
 
-		get("/", (req, res) -> {
+		get("/", (request, response) -> { return Example.handleView(request, response); }, new HandlebarsTemplateEngine());
+		post("/", (request, response) -> { return Example.handleView(request, response); }, new HandlebarsTemplateEngine());
+
+        enableDebugScreen();
+	}
+
+	private static ModelAndView handleView(Request req, Response res) throws Exception {
+	        String body = req.body();
             Map ctx = new HashMap();
+
             String selectedVersion = req.queryParams("xversion");
 
             if (selectedVersion == null){
@@ -72,9 +82,28 @@ public class Example {
 
             ctx.put("xversion", selectedVersion);
 
-            String query = req.queryParams("query");
-		    if (query == null) {
+            String query;
+
+            if (req.requestMethod().equals("GET")){
+                query = req.queryParams("query");
+
+                if (query == null) {
+                    query = "";
+                }
+            } else {
                 query = "";
+
+                for (String thing: body.split("&")) {
+                    String[] line = thing.split("=");
+                    String key = line[0];
+
+                    if (key.equals("query")){
+                        // Oh god I don't know how to do this properly and I don't care right now. WTF why isn't there
+                        // a way to do this in the framework.
+                        query = URLDecoder.decode(URLDecoder.decode(URLDecoder.decode(line[1], "utf-8"), "utf-8"), "utf-8");
+                        break;
+                    }
+                }
             }
 
             ctx.put("query", query);
@@ -98,9 +127,6 @@ public class Example {
             ctx.put("results", results);
 
             return new ModelAndView(ctx, "index.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        enableDebugScreen();
 	}
 
 	private static XPathSelector RunQuery(String query, String version) throws SaxonApiException{
