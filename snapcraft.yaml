@@ -10,7 +10,7 @@ confinement: strict
 
 apps:
   xcat-example-app:
-    command: java -jar $SNAP/target/xcat-app-jar-with-dependencies.jar
+    command: java -jar $SNAP/jar/xcat-app-jar-with-dependencies.jar
     plugs: [network-bind, network]
 
 parts:
@@ -19,7 +19,5 @@ parts:
     maven-options: 
       - compile
       - assembly:single
-  files:
-    type: nill
     prime:
-      - target/xcat-app-jar-with-dependencies.jar
+      - jar/xcat-app-jar-with-dependencies.jar
