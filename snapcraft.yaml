@@ -19,8 +19,5 @@ parts:
     maven-options: 
       - compile
       - assembly:single
-    prime:
-      - jar/xcat-app-jar-with-dependencies.jar
-      - database.xml
     source: .
     source-depth: 1
