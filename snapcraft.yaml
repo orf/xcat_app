@@ -22,7 +22,3 @@ parts:
     prime:
       - jar/xcat-app-jar-with-dependencies.jar
       - database.xml
-  
-  xcat-example-app:
-    after: [build]
-    plugin: jre
