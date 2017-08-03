@@ -9,7 +9,7 @@ grade: stable
 confinement: strict
 
 apps:
-  gping:
+  xcat-app:
     command: java -jar $SNAP/target/xcat-app-jar-with-dependencies.jar
     plugs: [network-bind, network]
 
