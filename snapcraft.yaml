@@ -24,4 +24,4 @@ parts:
     plugin: nil
     stage-packages: [default-jre]
     after: [build]
-    
+    source: .
