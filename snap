@@ -1,0 +1,18 @@
+name: xcat-example-app
+version: git
+summary: Example application vulnerable to xpath injection attacks
+description: |
+  A Java web application that is vulnerable to xpath injection 
+  attacks. Can be used to test tools like xcat.
+
+grade: stable
+confinement: strict
+
+apps:
+  gping:
+    command: java -jar $SNAP/target/xcat-app-jar-with-dependencies.jar
+    plugs: [network-bind, network]
+
+parts:
+  gping:
+    plugin: maven
