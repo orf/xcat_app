@@ -24,6 +24,4 @@ parts:
   
   xcat-example-app:
     after: [build]
-    type: jdk
-    plugin: dump
-    source: .
+    plugin: jdk
