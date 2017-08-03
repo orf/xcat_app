@@ -19,9 +19,3 @@ parts:
     maven-options: 
       - compile
       - assembly:single
-  
-  app:
-    plugin: nil
-    stage-packages: [default-jre]
-    after: [build]
-    source: .
