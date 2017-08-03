@@ -25,4 +25,4 @@ parts:
   
   xcat-example-app:
     after: [build]
-    plugin: jdk
+    plugin: jre
