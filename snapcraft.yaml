@@ -19,5 +19,3 @@ parts:
     maven-options: 
       - compile
       - assembly:single
-    source: .
-    source-depth: 1
