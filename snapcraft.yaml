@@ -25,3 +25,5 @@ parts:
   gping:
     after: [build]
     type: jdk
+    plugin: dump
+    source: .
