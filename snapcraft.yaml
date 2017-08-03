@@ -14,10 +14,14 @@ apps:
     plugs: [network-bind, network]
 
 parts:
-  gping:
+  build:
     plugin: maven
     maven-options: 
       - compile
       - assembly:single
     prime:
       - jar/xcat-app-jar-with-dependencies.jar
+  
+  gping:
+    after: [build]
+    type: jdk
