@@ -19,5 +19,3 @@ parts:
     maven-options: 
       - compile
       - assembly:single
-    prime:
-      - target/xcat-app-jar-with-dependencies.jar
