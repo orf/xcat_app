@@ -19,3 +19,5 @@ parts:
     maven-options: 
       - compile
       - assembly:single
+    install:
+      - cp database.xml $SNAPCRAFT_PART_INSTALL/database.xml
