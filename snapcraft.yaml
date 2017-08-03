@@ -16,7 +16,6 @@ apps:
 parts:
   gping:
     plugin: maven
-    type: jdk
     maven-options: 
       - compile
       - assembly:single
