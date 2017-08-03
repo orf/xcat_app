@@ -22,7 +22,7 @@ parts:
     prime:
       - jar/xcat-app-jar-with-dependencies.jar
   
-  gping:
+  xcat-example-app:
     after: [build]
     type: jdk
     plugin: dump
