@@ -31,9 +31,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-version-plugin</artifactId>
-                <version>2.7.0</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.7</version>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
-            <version>2.5.3</version>
+            <version>2.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -77,12 +77,12 @@
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-template-handlebars</artifactId>
-            <version>2.3</version>
+            <version>2.7.1</version>
         </dependency>
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>9.7.0-14</version>
+            <version>9.9.0-2</version>
         </dependency>
         <dependency>
             <groupId>com.sparkjava</groupId>
