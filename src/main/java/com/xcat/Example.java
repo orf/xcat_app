@@ -20,7 +20,7 @@ public class Example {
     private static Processor processor = new Processor(true);
     private static Logger logger = LoggerFactory.getLogger(Example.class);
     private static XdmNode booksDoc;
-    private static String[] xversions = new String[] {"1.0", "2.0", "3.0"};
+    private static String[] xversions = new String[] {"1.0", "2.0", "3.0", "3.1"};
     private static String[] resultsNames = new String[] {"title", "author", "description", "image"};
 
     public static void main(String[] args) throws Exception {
@@ -39,7 +39,7 @@ public class Example {
                 String query = scan.nextLine();
                 XPathSelector selector;
                 try {
-                    selector = RunQuery(query, "3.0");
+                    selector = RunQuery(query, "3.1");
                 } catch (SaxonApiException e){
                     continue;
                 }
