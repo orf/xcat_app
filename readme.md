@@ -9,7 +9,7 @@ xpath injection issues, or you can use it to test [the latest version of xcat](h
 
 To quickly run the app with Docker:
 
-`docker run -p 4567 tomforbes/xcat-app`
+`docker run -p 4567:4567 tomforbes/xcat-app`
 
 Then visit http://localhost:4567 to see the site.
 
