@@ -19,6 +19,9 @@ xcats `--oob` flag you must determine the host of your local machine relative to
 On Docker for mac you can use `host.docker.internal`. On Linux it is more convoluted,
 [see this stack overflow thread for more info](https://stackoverflow.com/questions/22944631/how-to-get-the-ip-address-of-the-docker-host-from-inside-a-docker-container)
 
+You can also run the container with `--net=host`, which will mean the container runs inside your hosts network interface 
+and does not have a separate IP.
+
 ## Building yourself
 
 Requires jdk+
