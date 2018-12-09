@@ -8,7 +8,7 @@ script:
 
 deploy:
   provider: script
-  script: bash docker_push tomforbes/xcat-app
+  script: bash docker_push.sh tomforbes/xcat-app
   on:
     branch: master
 
