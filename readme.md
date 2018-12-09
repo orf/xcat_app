@@ -11,7 +11,8 @@ To quickly run the app with Docker:
 
 `docker run -p 4567:4567 tomforbes/xcat-app`
 
-Then visit http://localhost:4567 to see the site.
+Then visit http://localhost:4567 to see the site. As a starting point, the search `Rogue') and string('1'='1` will give 
+you a boolean XPath injection you can play with.
 
 ### Using OOB with Docker
 
