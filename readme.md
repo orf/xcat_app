@@ -1,4 +1,4 @@
-# XCat example app
+# XPath injection demonstration application
 
 ![](https://images.microbadger.com/badges/image/tomforbes/xcat-app.svg)
 
