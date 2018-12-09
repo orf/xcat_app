@@ -10,4 +10,6 @@ COPY --from=0 --chown=app:app target/xcat-app-jar-with-dependencies.jar xcat-app
 COPY --chown=app:app . .
 USER app:app
 
+EXPOSE 4567
+
 CMD [ "java", "-jar", "xcat-app.jar" ]
