@@ -5,6 +5,12 @@ services: docker
 script:
   - docker pull tomforbes/xcat-app || true
   - docker build -t tomforbes/xcat-app --cache-from=tomforbes/xcat-app .
+  - docker run --name=xcat-app -d tomforbes/xcat-app -p 4567
+  - sleep 1
+  - wget http://localhost:4567/
+
+after_failure:
+  - docker logs xcat-app
 
 deploy:
   provider: script
