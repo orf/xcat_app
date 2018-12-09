@@ -1,24 +1,34 @@
 # XCat example app
 
-[![Snap Status](https://build.snapcraft.io/badge/orf/xcat_app.svg)](https://build.snapcraft.io/user/orf/xcat_app)
+[![](https://images.microbadger.com/badges/image/tomforbes/xcat-app.svg)]()
 
-This is an example app that is vulnerable to xpath injection attacks.
+This is an example app that is vulnerable to xpath injection attacks. This is a standalone app for experimenting with 
+xpath injection issues, or you can use it to test [the latest version of xcat](https://github.com/orf/xcat/).
 
-### Install
+## Quickstart
 
-If you are using Linux you can use `snap` to install a completely sandboxed working version in a single command:
+To quickly run the app with Docker:
 
-`snap install xcat-example-app`
+`docker run -p 4567 tomforbes/xcat-app`
 
-Then start the server with the command `xcat-example-app`.
+### Using OOB with Docker
 
-### Build:
+When running inside Docker the IP address of your _host_ is different from the external IP address. When using 
+xcats `--oob` flag you must determine the host of your local machine relative to your docker container.
 
-Requires jdk8
+On Docker for mac you can use `host.docker.internal`. On Linux it is more convoluted,
+[see this stack overflow thread for more info](https://stackoverflow.com/questions/22944631/how-to-get-the-ip-address-of-the-docker-host-from-inside-a-docker-container)
+
+## Building yourself
+
+Requires jdk+
 
 `mvn clean compile assembly:single`
 
 ### Run:
+
+**Warning:** It is highly recommended to use the docker container if you are exposing this to anyone else, as this 
+is insecure by default. Users will be able to read files (including private keys) on the filesystem.
 
 `java -jar target/xcat-app-jar-with-dependencies.jar`
 
