@@ -11,10 +11,12 @@ To quickly run the app with Docker:
 
 `docker run -p 4567 tomforbes/xcat-app`
 
+Then visit http://localhost:4567 to see the site.
+
 ### Using OOB with Docker
 
 When running inside Docker the IP address of your _host_ is different from the external IP address. When using 
-xcats `--oob` flag you must determine the host of your local machine relative to your docker container.
+xcat's `--oob` flag you must determine the host of your local machine relative to your docker container.
 
 On Docker for mac you can use `host.docker.internal`. On Linux it is more convoluted,
 [see this stack overflow thread for more info](https://stackoverflow.com/questions/22944631/how-to-get-the-ip-address-of-the-docker-host-from-inside-a-docker-container)
