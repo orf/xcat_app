@@ -3,7 +3,8 @@ dist: trusty
 sudo: true
 services: docker
 script:
-  - docker build -t tomforbes/xcat-app
+  - docker pull tomforbes/xcat-app || true
+  - docker build -t tomforbes/xcat-app --cache-from=tomforbes/xcat-app .
 
 deploy:
   provider: script
