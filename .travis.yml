@@ -1,8 +1,17 @@
 language: java
 dist: trusty
 sudo: true
-
 services: docker
-
 script:
-  - docker build .
+  - docker build -t tomforbes/xcat-app
+
+deploy:
+  provider: script
+  script: bash docker_push tomforbes/xcat-app
+  on:
+    branch: master
+
+env:
+  global:
+    - secure: "WdmI/rUg3DZxqwEeVHnzm7Qas8sZSJ7kzJiCR4X0vb8zfA0feqag/1lKa8nCRMWjJRxhYVeJBnmpT1giKUqUNI4hKQdhPWgwlYt3mHpH0DWEK0eZQatJ3/jMM6QS9VkWZCuoej5SKbqCubz6czDWllRwj5x6Ys7+e9nFfnmIQdpeRB+OWc1VWLCKUqjiVfZzh+eMsAl5DbN4ZFffteyASEWh/75bWl6mvCje7+Xj1i5KbTo5RC3N5Lxsz8WgjphYxaOdmg5Ii65lHdvhaGIs9I0y2inRCi899ryctDDhyM+zSw5iUSk6MdoC63cs+kAlUPxHPJlq2D01EbvL1RfpIiAIvW5niQnAF/1ONvTMsKmwihcjpqCK5ns/aqjLfrtiVUtQ8kYcHI8czyLWso38W6xpR9Ja1eG44nF60pqdv6WZ9O7bwA1vDIWh++wgQw1i3JfCvRlgpYXOApi2RhmeCBfcloZQ5tIZOQuWx9IjzRyj4Q2KDBw6my1mwignKwFTl/GtNTdlAvOfJKM235vJYMebAfJncKYh/uYQbr4nbxsykove9oT91zIlBKoszEgA03tZNPsGDWYE0HM01+gc73fMIxArkSf/0LrC5KE59QplPvVjTUtwFgqO+Y3EV2Sq4v+uPZQ+1YASOxO2kRAdivQqr2lq8rhJxEOp89jlMxU="
+    - secure: "nOOD57DOn7V/0LpquCsH26NcrBChS12Kp+9/c84UqFrvRHlUzFkoX9mqVXw/PwajCopLIL2AWs/f46nTgmVkvsJCwZHrz4SNBqI+y+cXwjSZp4Je047UI/TZOwId1nn3k7y3nuZNUzFaJw/kf68s5BsMHJGp7tL5GLsqjWAqZEbO5UCRWZZ0ojcSu6O0RMv0w9iKFl9tRRCdRXSMn+PFhSRq/fdaMze3Cvm5cnxTMe6egUPfBo726bioMyDa76oIfvcbogPgLZkOX5qzTKoecnby8lLzv+n2ZgbpYSh7qhfI+sgJuHXdz3pEPKMeU+evtRjy9WX2s9qKMJJ/vwCKPj5WVHn8lESeL54WP3/MXI3/JNrvJhf6VzLCnQA8gHB6ZhO9vz8lS0WeXyTf+T898UV1BfZUmVoeKQRUwQf1TfnfhBcmz7cT6yr64F3pzZrcawhAyTl2D5UZ3pKKFs3YLTI4ChkhSz9wh5PuYa0jmqY+6abH4CQM2wC5i/q6BZ8IfBt9yp/9FQ2UjaX/zmdBjwPtdt7xyr8khft5YxVxoWTZkQ11gJNgQD/qBxMk1vTbkwm9g7wuZgWPI11KYlTpBvnEech9dM5ZeCX2WXra7YaWrhdYdMLiJr3sAWAbl37wWBhQV+hPrOwULLVQdCK9XJ0Gc8vAKc4oJ5SEnl93/wI="
