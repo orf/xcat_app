@@ -5,6 +5,8 @@
 This is an example app that is vulnerable to xpath injection attacks. This is a standalone app for experimenting with 
 xpath injection issues, or you can use it to test [the latest version of xcat](https://github.com/orf/xcat/).
 
+![](./screenshot.png)
+
 ## Quickstart
 
 To quickly run the app with Docker:
