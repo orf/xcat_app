@@ -6,6 +6,7 @@ RUN mvn compile assembly:single -q
 
 FROM openjdk:11-jre-slim
 RUN groupadd -r app && useradd --no-log-init -r -g app app
+WORKDIR /app
 COPY --from=0 --chown=app:app target/xcat-app-jar-with-dependencies.jar xcat-app.jar
 COPY --chown=app:app . .
 USER app:app
