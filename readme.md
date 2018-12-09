@@ -16,6 +16,8 @@ To quickly run the app with Docker:
 Then visit http://localhost:4567 to see the site. As a starting point, the search `Rogue') and string('1'='1` will give 
 you a boolean XPath injection you can play with.
 
+The vulnerable `/` endpoint accepts both URL-encoded `GET` parameters as well as form-encoded `POST` parameters.
+
 ### Using OOB with Docker
 
 When running inside Docker the IP address of your _host_ is different from the external IP address. When using 
