@@ -22,7 +22,7 @@ The vulnerable `/` endpoint accepts both URL-encoded `GET` parameters as well as
 
 `xcat run http://localhost:4567 query query=Rogue --true-string=Lawyer`
 
-`xcat shell http://localhost:4567 query xversion=1.0 query=Rogue --true-string=Lawyer`
+`xcat shell http://localhost:4567 query query=Rogue --true-string=Lawyer`
 
 ### Using OOB with Docker
 
