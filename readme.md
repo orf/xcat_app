@@ -18,6 +18,12 @@ you a boolean XPath injection you can play with.
 
 The vulnerable `/` endpoint accepts both URL-encoded `GET` parameters as well as form-encoded `POST` parameters.
 
+### Examples
+
+`xcat run http://localhost:4567 query query=Rogue --true-string=Lawyer`
+
+`xcat shell http://localhost:4567 query xversion=1.0 query=Rogue --true-string=Lawyer`
+
 ### Using OOB with Docker
 
 When running inside Docker the IP address of your _host_ is different from the external IP address. When using 
